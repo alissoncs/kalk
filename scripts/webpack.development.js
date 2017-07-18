@@ -11,16 +11,7 @@ const config = {
     new webpack.NamedModulesPlugin(),
   ],
   module: {
-    rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'eslint-loader',
-        options: {
-          formatter: eslintFormatter,
-        },
-      }, {
+    rules: [{
         test: /\.(less|css)$/,
         use: [{
           loader: 'style-loader',

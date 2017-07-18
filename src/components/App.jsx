@@ -1,21 +1,26 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
-import Home from './Home';
-import Test from './Test';
-import './../style/main.less';
+import { createStore, combineReducers } from 'redux';
+import usersReducer from '../reducers/usersReducer';
+import UsersContainer from './UsersContainer.jsx';
 
-const App = ({ store }) => (
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={Home} />
-      <Route path="/test" component={Test} />
-    </Router>
-  </Provider>
-);
+const store = createStore(combineReducers({
+  usersReducer,
+}));
 
-App.propTypes = {
-  store: PropTypes.object.isRequired,
-};
+export default class App extends Component {
 
-export default App;
+  componentWillMount() {
+    this.sd = {
+    };
+  }
+
+  render() {
+    this.sd = {};
+
+    return <Provider store={store}>
+      <UsersContainer />
+    </Provider>;
+  }
+
+}
